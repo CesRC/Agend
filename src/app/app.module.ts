@@ -5,7 +5,6 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LogInPage } from '../pages/log-in/log-in';
-import { ListPage } from '../pages/list/list';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { ContactoPage } from '../pages/contacto/contacto';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
@@ -24,7 +23,6 @@ import { ContactService } from '../services/contact.service';
     MyApp,
     HomePage,
     LogInPage,
-    ListPage,
     ContactoPage,
     AgendaPage,
     AcercaDePage,
@@ -41,7 +39,6 @@ import { ContactService } from '../services/contact.service';
     MyApp,
     HomePage,
     LogInPage,
-    ListPage,
     ContactoPage,
     AgendaPage,
     AcercaDePage,

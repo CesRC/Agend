@@ -7,30 +7,24 @@
 <ion-header>
 
   <ion-navbar color= "primary">
-    <ion-title text-center>Contacto</ion-title>
+    <ion-title>Contactos</ion-title>
     <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
     </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onLoadNewContact()">
+          <ion-icon name="add-circle"></ion-icon>
+       </button>
+  </ion-buttons>
   </ion-navbar>
-
-  
-  <ion-navbar>
-      <ion-title text-center>Añadir contacto</ion-title>
-
-      <ion-buttons end>
-          <button ion-button icon-only (click)="onLoadNewContact()">
-              <ion-icon name="add-circle"></ion-icon>
-           </button>
-      </ion-buttons>
-  </ion-navbar>
-  
 
 </ion-header>
 
 
 <ion-content padding>
   <ion-list>
-    <button ion-item *ngFor="let contact of contacts" (click)="onItemTapped()">
+    <!--<button ion-item *ngFor="let contact of contacts" (click)="onItemTapped()">-->
+    <button ion-item *ngFor="let contact of contacts" (click)="openActionSheetController()" class="button">
       <p><strong>Nombre: </strong>{{contact.nombre}}</p>
       <p><strong>Organización: </strong>{{contact.organization}}</p>
       <p><strong>Móvil: </strong>{{contact.movil}}</p>

@@ -4,13 +4,8 @@
         <button ion-button menuToggle>
           <ion-icon name="menu"></ion-icon>
         </button>
-      <ion-title text-center>Agenda</ion-title>
+      <ion-title>Nuevo Contacto</ion-title>
     </ion-navbar>
-
-  <ion-navbar>
-    <ion-title>Nuevo Contacto</ion-title>
-  </ion-navbar>
-
 </ion-header>
 
 
@@ -28,7 +23,7 @@
         </ion-item>
 
         <ion-item>
-          <ion-label>Número</ion-label>
+          <ion-label>Móvil</ion-label>
           <ion-input type="text" placeholder="666666666" name="movil" ngModel></ion-input>
         </ion-item>
 
@@ -38,7 +33,9 @@
         </ion-item>
     
     </ion-list>
-    <button ion-button block type= "submit" [disabled]= "!f.valid">Aceptar</button>
+    <div align="center">
+      <button ion-button large type= "submit" [disabled]= "!f.valid">Aceptar</button>
+      <button ion-button large type= "button" [disabled]= "!f.valid">Cancelar</button>
+    </div>
   </form>
-
 </ion-content>
