@@ -6,7 +6,7 @@ import { importType } from '@angular/compiler/src/output/output_ast';
 import { NuevoContactoPage } from '../nuevo-contacto/nuevo-contacto';
 import { Contact } from '../../models/contact.model';
 import { ContactService } from '../../services/contact.service';
-import { ClickContactoPage } from '../click-contacto/click-contacto';
+//import { ClickContactoPage } from '../click-contacto/click-contacto';
 import { ActionSheetController } from 'ionic-angular';
 
 
@@ -78,6 +78,6 @@ export class ContactoPage {
     });
 
     actionSheet.present();    
-}
+  }
 
 }

@@ -9,6 +9,7 @@ import { ContactoPage } from '../pages/contacto/contacto';
 import { AgendaPage } from '../pages/agenda/agenda';
 import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
+import { NuevaTareaPage } from '../pages/nueva-tarea/nueva-tarea';
 
 
 

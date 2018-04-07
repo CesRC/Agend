@@ -6,18 +6,31 @@
 -->
 <ion-header>
 
-    <ion-navbar color= "primary">
-      <ion-title>Agenda</ion-title>
-  
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-navbar>
+  <ion-navbar color= "primary">
+    <ion-title>Tareas Pendientes</ion-title>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="onLoadNewTask()">
+          <ion-icon name="add-circle"></ion-icon>
+       </button>
+  </ion-buttons>
+  </ion-navbar>
 
-  </ion-header>
-  
-  <ion-content padding>
-    
-  </ion-content>
-  
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <!--<button ion-item *ngFor="let contact of contacts" (click)="onItemTapped()">-->
+    <button ion-item *ngFor="let task of tasks" (click)="openActionSheetController()" class="button">
+      <p><strong>Evento: </strong>{{task.evento}}</p>
+      <p><strong>Fecha: </strong>{{task.fecha}}</p>
+      <p><strong>Lugar: </strong>{{task.lugar}}</p>
+      <p><strong>Prioridad: </strong>{{task.prioridad}}</p>
+    </button>
+  </ion-list>
+</ion-content>
+
   

@@ -11,12 +11,14 @@ import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
 import { ClickContactoPage } from '../pages/click-contacto/click-contacto';
 import { EditContactPage } from '../pages/edit-contact/edit-contact';
+import { NuevaTareaPage } from '../pages/nueva-tarea/nueva-tarea';
 
 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContactService } from '../services/contact.service';
+import { TaskService } from '../services/task.service';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ContactService } from '../services/contact.service';
     AcercaDePage,
     NuevoContactoPage,
     ClickContactoPage,
+    NuevaTareaPage,
     EditContactPage
   ],
   imports: [
@@ -44,12 +47,14 @@ import { ContactService } from '../services/contact.service';
     AcercaDePage,
     NuevoContactoPage,
     ClickContactoPage,
-    EditContactPage
+    EditContactPage,
+    NuevaTareaPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ContactService,
+    TaskService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

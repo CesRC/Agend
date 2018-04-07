@@ -1,0 +1,49 @@
+<!--
+  Generated template for the NuevaTareaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color= "primary">
+    <ion-title>Nueva Tarea</ion-title>
+    <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<form (ngSubmit)="onAddTask(f.value)" #f="ngForm">
+  <ion-list>
+      <ion-item>
+        <ion-label>Evento</ion-label>
+        <ion-input type="text" name="evento" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Fecha</ion-label>
+        <ion-input type="text" name="fecha" ngModel required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Lugar</ion-label>
+        <ion-input type="text" name="lugar" ngModel></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Prioridad</ion-label>
+        <ion-input type="text" name="prioridad" ngModel></ion-input>
+      </ion-item>
+  
+  </ion-list>
+  <div align="center">
+    <button ion-button large type= "submit" [disabled]= "!f.valid">Agregar</button>
+    <button ion-button large type= "button" [disabled]= "!f.valid">Cancelar</button>
+  </div>
+</form>
+</ion-content>
+
