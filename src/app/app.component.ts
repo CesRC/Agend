@@ -10,6 +10,7 @@ import { AgendaPage } from '../pages/agenda/agenda';
 import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { NuevaTareaPage } from '../pages/nueva-tarea/nueva-tarea';
+import { RegistroPage } from '../pages/registro/registro';
 
 
 
@@ -21,7 +22,7 @@ import { NuevaTareaPage } from '../pages/nueva-tarea/nueva-tarea';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ContactoPage;
+  rootPage: any = LogInPage;
 
   pages: Array<{title: string, component: any}>;
 

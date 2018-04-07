@@ -12,13 +12,26 @@ import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
 import { ClickContactoPage } from '../pages/click-contacto/click-contacto';
 import { EditContactPage } from '../pages/edit-contact/edit-contact';
 import { NuevaTareaPage } from '../pages/nueva-tarea/nueva-tarea';
-
-
+import { RegistroPage } from '../pages/registro/registro';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContactService } from '../services/contact.service';
 import { TaskService } from '../services/task.service';
+
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyAsWkJbPHkBKC1SCj1aM4l2hP5p7HQDY_I",
+  authDomain: "practica-optativa-depi.firebaseapp.com",
+  databaseURL: "https://practica-optativa-depi.firebaseio.com",
+  projectId: "practica-optativa-depi",
+  storageBucket: "practica-optativa-depi.appspot.com",
+  messagingSenderId: "1088558755915"
+};
+
 
 @NgModule({
   declarations: [
@@ -31,11 +44,15 @@ import { TaskService } from '../services/task.service';
     NuevoContactoPage,
     ClickContactoPage,
     NuevaTareaPage,
-    EditContactPage
+    EditContactPage,
+    RegistroPage
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(firebaseConfig,'practica-optativa-depi'),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -48,7 +65,8 @@ import { TaskService } from '../services/task.service';
     NuevoContactoPage,
     ClickContactoPage,
     EditContactPage,
-    NuevaTareaPage
+    NuevaTareaPage,
+    RegistroPage
   ],
   providers: [
     StatusBar,
