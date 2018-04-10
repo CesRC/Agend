@@ -1,5 +1,5 @@
 <!--
-  Generated template for the AgendaPage page.
+  Generated template for the ContactoPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
@@ -22,13 +22,26 @@
 
 
 <ion-content padding>
-  <ion-list>
-    <!--<button ion-item *ngFor="let contact of contacts" (click)="onItemTapped()">-->
-    <button ion-item *ngFor="let contact of contacts" (click)="openActionSheetController()" class="button">
-      <p><strong>Nombre: </strong>{{contact.nombre}}</p>
-      <p><strong>Organización: </strong>{{contact.organization}}</p>
-      <p><strong>Móvil: </strong>{{contact.movil}}</p>
-      <p><strong>Correo: </strong>{{contact.correo}}</p>
+  <!-- <ion-list>
+   <button ion-item (click)="buttonOnClick()"  [navPush] = "navEdit" [navParams]="{contact: contact}">  
+      <ion-item *ngFor="let contact of contactList$ | async">
+         <p><strong>Nombre: </strong>{{contact.nombre}}</p>
+         <p><strong>Organización: </strong>{{contact.organization}}</p>
+         <p><strong>Móvil: </strong>{{contact.movil}}</p>
+         <p><strong>Correo: </strong>{{contact.correo}}</p>
+      </ion-item>
     </button>
-  </ion-list>
+
+  </ion-list> -->
+
+  <ion-list>
+       <button ion-item *ngFor="let contact of contactList$ | async"
+       detail-push [navPush]="navEdit" [navParams]="{contact: contact}">
+       {{contact.nombre}}
+          <p><strong>Nombre: </strong>{{contact.nombre}}</p>
+          <p><strong>Organización: </strong>{{contact.organization}}</p>
+          <p><strong>Móvil: </strong>{{contact.movil}}</p>
+          <p><strong>Correo: </strong>{{contact.correo}}</p>
+       </button>
+   </ion-list>
 </ion-content>

@@ -8,7 +8,7 @@ import { ContactService } from '../../services/contact.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastService } from '../../services/toast-service';
 /**
- * Generated class for the NuevoContactoPage page.
+ * Generated class for the EditPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -20,35 +20,40 @@ import { ToastService } from '../../services/toast-service';
     ReactiveFormsModule
            ]
 })
+
 @IonicPage()
 @Component({
-  selector: 'page-nuevo-contacto',
-  templateUrl: 'nuevo-contacto.html',
+  selector: 'page-edit',
+  templateUrl: 'edit.html',
 })
-export class NuevoContactoPage {
+export class EditPage {
 
   contact: Contact = {
-    nombre: undefined,
-    organization: undefined,
-    movil: undefined,
-    correo: undefined,
+    nombre: this.navParams.get('contact').nombre,
+    organization: this.navParams.get('contact').organization,
+    movil: this.navParams.get('contact').movil,
+    correo: this.navParams.get('contact').correo,
   }
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private contactService: ContactService, private toast: ToastService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NuevoContactoPage');
+  ionViewWillLoad() {
+    console.log(this.navParams.get('contact'));
   }
 
-  addContact (contact: Contact){
-    this.contactService.addContact(contact).then(ref => {
-      console.log(ref.key);
-      this.toast.show(`${contact.nombre} created!`);
-      //this.navCtrl.setRoot('ContactoPage', {key: ref.key});
+   saveContact(contact: Contact){
+     this.contactService.editContact(contact).then (() => {
+      this.toast.show(`${contact.nombre} saved!`);
+       this.navCtrl.setRoot(ContactoPage);
+     });
+  }
+
+  removeContact(contact: Contact){
+    this.contactService.removeContact(contact).then (() => {
+      this.toast.show(`${contact.nombre} deleted!`);
       this.navCtrl.setRoot(ContactoPage);
-    })
+    });
   }
-
 
 }

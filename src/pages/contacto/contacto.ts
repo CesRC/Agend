@@ -1,17 +1,15 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-
-import { importType } from '@angular/compiler/src/output/output_ast';
+import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 import { NuevoContactoPage } from '../nuevo-contacto/nuevo-contacto';
+import { ContactService} from '../../services/contact.service';
+import { importType } from '@angular/compiler/src/output/output_ast';
+import { Observable } from 'rxjs/Observable';
 import { Contact } from '../../models/contact.model';
-import { ContactService } from '../../services/contact.service';
-//import { ClickContactoPage } from '../click-contacto/click-contacto';
-import { ActionSheetController } from 'ionic-angular';
-
+import { EditPage } from '../edit/edit';
+//import { EditContactPage } from '../edit-contact/edit-contact';
 
 /**
- * Generated class for the AgendaPage page.
+ * Generated class for the ContactoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -24,60 +22,37 @@ import { ActionSheetController } from 'ionic-angular';
 })
 export class ContactoPage {
 
-  contacts: Contact []=[];
+  navEdit= EditPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,private ContactService: ContactService, public actionSheetCtrl: ActionSheetController) {
+  contactList$: Observable<Contact[]>
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private contactList: ContactService,
+    public actionSheetCtrl: ActionSheetController,
+    private contactService: ContactService
+  ) {
+
+    this.contactList$= this.contactList
+    .getContactList()
+    .snapshotChanges()
+    .map(
+      changes => {
+        return changes.map(c => ({
+          key: c.payload.key, 
+          ...c.payload.val(),
+          }));
+        });
+    
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AgendaPage');
+    console.log('ionViewDidLoad ContactoPage');
   }
-
+  
   onLoadNewContact() {
-     this.navCtrl.push(NuevoContactoPage);
-   }
-
-   ionViewWillEnter(){
-     this.contacts= this.ContactService.getContact();
-   }
-
-   /*onItemTapped() {
-    this.navCtrl.push(ClickContactoPage);
-
-   }*/
-
-   openActionSheetController(){
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Acciones',
-      buttons: [
-        {
-          text: 'Modificar',
-          icon: "add-circle",
-          cssClass: 'EditIcon',
-          handler: () => {
-            console.log('Modificar clicked');
-          }
-        },
-        {
-          text: 'Delete',
-          icon: "remove-circle",
-          cssClass: 'EditIcon2',
-          role: 'destructive',
-          handler: () => {
-            console.log('Delete clicked');
-          }
-        },
-        {
-          text: 'Cancelar',
-          //role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-
-    actionSheet.present();    
+    this.navCtrl.push(NuevoContactoPage);
   }
+
 
 }

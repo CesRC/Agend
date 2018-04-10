@@ -5,15 +5,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { LogInPage } from '../pages/log-in/log-in';
-import { ContactoPage } from '../pages/contacto/contacto';
 import { AgendaPage } from '../pages/agenda/agenda';
+import { ContactoPage } from '../pages/contacto/contacto';
 import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
+import { EditPage } from '../pages/edit/edit';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { NuevaTareaPage } from '../pages/nueva-tarea/nueva-tarea';
 import { RegistroPage } from '../pages/registro/registro';
-
-
-
 
 
 @Component({
@@ -22,7 +20,7 @@ import { RegistroPage } from '../pages/registro/registro';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = LogInPage;
+  rootPage: any = ContactoPage;
 
   pages: Array<{title: string, component: any}>;
 

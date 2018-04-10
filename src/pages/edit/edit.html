@@ -1,0 +1,47 @@
+<!--
+  Generated template for the EditPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{contact?.nombre}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+      <ion-item>
+        <ion-label>Nombre</ion-label>
+        <ion-input [(ngModel)]= "contact.nombre" type="text" placeholder="Nombre"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Organización</ion-label>
+        <ion-input [(ngModel)]= "contact.organization" type="text" placeholder="Organización"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Móvil</ion-label>
+        <ion-input [(ngModel)]= "contact.movil" type="text" placeholder="666666666"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>Correo</ion-label>
+        <ion-input [(ngModel)]= "contact.correo" type="text" placeholder="lucas@example.com"></ion-input>
+      </ion-item>
+      <!-- {{contact | json}}  -->
+  </ion-list>
+
+  
+
+  <div align="center">
+    <button ion-button block full type= "submit" (click)="saveContact(contact)">Guardar</button>
+    <button ion-button block full color="danger" (click)="removeContact(contact)">Eliminar</button>
+  </div>
+
+</ion-content>

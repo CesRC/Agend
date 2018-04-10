@@ -9,8 +9,7 @@ import { AgendaPage } from '../pages/agenda/agenda';
 import { ContactoPage } from '../pages/contacto/contacto';
 import { AcercaDePage } from '../pages/acerca-de/acerca-de';
 import { NuevoContactoPage } from '../pages/nuevo-contacto/nuevo-contacto';
-import { ClickContactoPage } from '../pages/click-contacto/click-contacto';
-import { EditContactPage } from '../pages/edit-contact/edit-contact';
+import { EditPage } from '../pages/edit/edit';
 import { NuevaTareaPage } from '../pages/nueva-tarea/nueva-tarea';
 import { RegistroPage } from '../pages/registro/registro';
 
@@ -22,6 +21,7 @@ import { TaskService } from '../services/task.service';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { ToastService } from '../services/toast-service';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAsWkJbPHkBKC1SCj1aM4l2hP5p7HQDY_I",
@@ -42,17 +42,16 @@ export const firebaseConfig = {
     AgendaPage,
     AcercaDePage,
     NuevoContactoPage,
-    ClickContactoPage,
     NuevaTareaPage,
-    EditContactPage,
-    RegistroPage
+    EditPage,
+    RegistroPage,
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
     AngularFireModule.initializeApp(firebaseConfig,'practica-optativa-depi'),
     AngularFireDatabaseModule,
-    AngularFireAuthModule
+    AngularFireAuthModule,
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,17 +62,17 @@ export const firebaseConfig = {
     AgendaPage,
     AcercaDePage,
     NuevoContactoPage,
-    ClickContactoPage,
-    EditContactPage,
     NuevaTareaPage,
-    RegistroPage
+    EditPage,
+    RegistroPage,
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ContactService,
     TaskService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ToastService,
   ]
 })
 export class AppModule {}
