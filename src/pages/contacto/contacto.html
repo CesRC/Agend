@@ -12,7 +12,7 @@
         <ion-icon name="menu"></ion-icon>
     </button>
     <ion-buttons end>
-      <button ion-button icon-only (click)="onLoadNewContact()">
+      <button navPush="NuevoContactoPage" ion-button>
           <ion-icon name="add-circle"></ion-icon>
        </button>
   </ion-buttons>
@@ -22,6 +22,15 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let contact of contactList | async" 
+    detail-push navPush="EditPage" [navParams]="{contact:contact}">
+    <p><strong>Nombre: </strong>{{contact.nombre}}</p>
+    <p><strong>Organización: </strong>{{contact.organization}}</p>
+    <p><strong>Móvil: </strong>{{contact.movil}}</p>
+    <p><strong>Correo: </strong>{{contact.correo}}</p>
+    </ion-item>
+  </ion-list>
   <!-- <ion-list>
    <button ion-item (click)="buttonOnClick()"  [navPush] = "navEdit" [navParams]="{contact: contact}">  
       <ion-item *ngFor="let contact of contactList$ | async">
@@ -32,7 +41,7 @@
       </ion-item>
     </button>
 
-  </ion-list> -->
+  </ion-list> 
 
   <ion-list>
        <button ion-item *ngFor="let contact of contactList$ | async"
@@ -43,5 +52,5 @@
           <p><strong>Móvil: </strong>{{contact.movil}}</p>
           <p><strong>Correo: </strong>{{contact.correo}}</p>
        </button>
-   </ion-list>
+   </ion-list>-->
 </ion-content>

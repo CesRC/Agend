@@ -1,11 +1,11 @@
-import {Contact} from "../models/contact.model"
+import { Contact } from "../models/contact.model";
 import { Injectable } from "@angular/core";
 import { AngularFireDatabase } from "angularfire2/database";
 
 @Injectable()
 export class ContactService{
 
-    private contactListRef = this.db.list<Contact>('contactList');
+    private contactListRef = this.db.list<Contact>('contact');
     
     
     constructor(private db: AngularFireDatabase){

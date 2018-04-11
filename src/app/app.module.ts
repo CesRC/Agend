@@ -22,6 +22,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { ToastService } from '../services/toast-service';
+import { ContactoPageModule } from '../pages/contacto/contacto.module';
+import { NuevoContactoPageModule } from '../pages/nuevo-contacto/nuevo-contacto.module';
+import { EditPageModule } from '../pages/edit/edit.module';
 
 export const firebaseConfig = {
   apiKey: "AIzaSyAsWkJbPHkBKC1SCj1aM4l2hP5p7HQDY_I",
@@ -38,13 +41,13 @@ export const firebaseConfig = {
     MyApp,
     HomePage,
     LogInPage,
-    ContactoPage,
+    //ContactoPage,
     AgendaPage,
     AcercaDePage,
-    NuevoContactoPage,
+    //NuevoContactoPage,
     NuevaTareaPage,
-    EditPage,
-    RegistroPage,
+    //EditPage,
+    RegistroPage
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,9 @@ export const firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig,'practica-optativa-depi'),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
+    ContactoPageModule,
+    NuevoContactoPageModule,
+    EditPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -64,7 +70,7 @@ export const firebaseConfig = {
     NuevoContactoPage,
     NuevaTareaPage,
     EditPage,
-    RegistroPage,
+    RegistroPage
   ],
   providers: [
     StatusBar,

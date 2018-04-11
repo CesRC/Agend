@@ -24,27 +24,21 @@ export class ContactoPage {
 
   navEdit= EditPage;
 
-  contactList$: Observable<Contact[]>
+  contactList: Observable<Contact[]>
 
   constructor(public navCtrl: NavController, 
     public navParams: NavParams,
-    private contactList: ContactService,
     public actionSheetCtrl: ActionSheetController,
     private contactService: ContactService
   ) {
-
-    this.contactList$= this.contactList
-    .getContactList()
-    .snapshotChanges()
-    .map(
+    this.contactList= this.contactService.getContactList().snapshotChanges().map(
       changes => {
         return changes.map(c => ({
           key: c.payload.key, 
           ...c.payload.val(),
-          }));
+          }))
         });
-    
-  }
+      }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactoPage');

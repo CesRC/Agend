@@ -13,13 +13,13 @@ import { ToastService } from '../../services/toast-service';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-@NgModule({
+/*@NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule
            ]
-})
+})*/
 
 @IonicPage()
 @Component({
@@ -29,31 +29,35 @@ import { ToastService } from '../../services/toast-service';
 export class EditPage {
 
   contact: Contact = {
-    nombre: this.navParams.get('contact').nombre,
-    organization: this.navParams.get('contact').organization,
-    movil: this.navParams.get('contact').movil,
-    correo: this.navParams.get('contact').correo,
-  }
+    nombre: '',
+    organization: '',
+    movil: '',
+    correo: ''
+  };
 
   constructor(private navCtrl: NavController, private navParams: NavParams, private contactService: ContactService, private toast: ToastService) {
   }
 
-  ionViewWillLoad() {
-    console.log(this.navParams.get('contact'));
+  ionViewDidLoad() {
+    this.contact = this.navParams.get('contact');
   }
+
+  /*ionViewWillLoad() {
+    console.log(this.navParams.get('contact'));
+  }*/
 
    saveContact(contact: Contact){
      this.contactService.editContact(contact).then (() => {
       this.toast.show(`${contact.nombre} saved!`);
-       this.navCtrl.setRoot(ContactoPage);
-     });
+       this.navCtrl.setRoot('ContactoPage');
+     })
   }
 
   removeContact(contact: Contact){
     this.contactService.removeContact(contact).then (() => {
       this.toast.show(`${contact.nombre} deleted!`);
       this.navCtrl.setRoot(ContactoPage);
-    });
+    })
   }
 
 }

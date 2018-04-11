@@ -13,13 +13,13 @@ import { ToastService } from '../../services/toast-service';
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
-@NgModule({
+/*@NgModule({
   imports: [
     BrowserModule,
     FormsModule,
     ReactiveFormsModule
            ]
-})
+})*/
 @IonicPage()
 @Component({
   selector: 'page-nuevo-contacto',
@@ -28,13 +28,13 @@ import { ToastService } from '../../services/toast-service';
 export class NuevoContactoPage {
 
   contact: Contact = {
-    nombre: undefined,
-    organization: undefined,
-    movil: undefined,
-    correo: undefined,
-  }
+    nombre: '',
+    organization: '',
+    movil: '',
+    correo: '',
+  };
 
-  constructor(private navCtrl: NavController, private navParams: NavParams, private contactService: ContactService, private toast: ToastService) {
+  constructor(private navCtrl: NavController, private navParams: NavParams, private contactService: ContactService) {
   }
 
   ionViewDidLoad() {
@@ -43,12 +43,10 @@ export class NuevoContactoPage {
 
   addContact (contact: Contact){
     this.contactService.addContact(contact).then(ref => {
-      console.log(ref.key);
-      this.toast.show(`${contact.nombre} created!`);
+      //this.toast.show(`${contact.nombre} created!`);
       //this.navCtrl.setRoot('ContactoPage', {key: ref.key});
-      this.navCtrl.setRoot(ContactoPage);
+      this.navCtrl.setRoot('ContactoPage');
     })
   }
-
 
 }

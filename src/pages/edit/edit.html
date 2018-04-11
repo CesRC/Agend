@@ -14,33 +14,31 @@
 
 
 <ion-content padding>
-  <ion-list>
+  
       <ion-item>
         <ion-label>Nombre</ion-label>
-        <ion-input [(ngModel)]= "contact.nombre" type="text" placeholder="Nombre"></ion-input>
+        <ion-input [(ngModel)]= "contact.nombre"  placeholder="Nombre"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Organización</ion-label>
-        <ion-input [(ngModel)]= "contact.organization" type="text" placeholder="Organización"></ion-input>
+        <ion-input [(ngModel)]= "contact.organization"  placeholder="Organización"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Móvil</ion-label>
-        <ion-input [(ngModel)]= "contact.movil" type="text" placeholder="666666666"></ion-input>
+        <ion-input [(ngModel)]= "contact.movil"  placeholder="666666666"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label>Correo</ion-label>
-        <ion-input [(ngModel)]= "contact.correo" type="text" placeholder="lucas@example.com"></ion-input>
+        <ion-input [(ngModel)]= "contact.correo"  placeholder="lucas@example.com"></ion-input>
       </ion-item>
       <!-- {{contact | json}}  -->
-  </ion-list>
-
-  
+   
 
   <div align="center">
-    <button ion-button block full type= "submit" (click)="saveContact(contact)">Guardar</button>
+    <button ion-button block full (click)="saveContact(contact)">Guardar</button>
     <button ion-button block full color="danger" (click)="removeContact(contact)">Eliminar</button>
   </div>
 

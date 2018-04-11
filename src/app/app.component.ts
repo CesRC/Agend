@@ -20,7 +20,7 @@ import { RegistroPage } from '../pages/registro/registro';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = ContactoPage;
+  rootPage: String = 'ContactoPage';
 
   pages: Array<{title: string, component: any}>;
 
