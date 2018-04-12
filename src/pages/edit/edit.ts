@@ -7,19 +7,6 @@ import { Contact } from '../../models/contact.model';
 import { ContactService } from '../../services/contact.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ToastService } from '../../services/toast-service';
-/**
- * Generated class for the EditPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-/*@NgModule({
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule
-           ]
-})*/
 
 @IonicPage()
 @Component({
@@ -42,14 +29,10 @@ export class EditPage {
     this.contact = this.navParams.get('contact');
   }
 
-  /*ionViewWillLoad() {
-    console.log(this.navParams.get('contact'));
-  }*/
-
-   saveContact(contact: Contact){
-     this.contactService.editContact(contact).then (() => {
-      this.toast.show(`${contact.nombre} saved!`);
-       this.navCtrl.setRoot('ContactoPage');
+  saveContact(contact: Contact){
+    this.contactService.editContact(contact).then (() => {
+       this.toast.show(`${contact.nombre} saved!`);
+       this.navCtrl.setRoot(ContactoPage);
      })
   }
 

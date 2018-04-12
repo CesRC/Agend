@@ -7,7 +7,6 @@ export class ContactService{
 
     private contactListRef = this.db.list<Contact>('contact');
     
-    
     constructor(private db: AngularFireDatabase){
     }
 

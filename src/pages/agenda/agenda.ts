@@ -1,17 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
 import { Task } from '../../models/task.model';
 import { TaskService } from '../../services/task.service';
 import { NuevaTareaPage } from '../nueva-tarea/nueva-tarea';
-import { ActionSheetController } from 'ionic-angular';
-
-/**
- * Generated class for the AgendaPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { importType } from '@angular/compiler/src/output/output_ast';
+import { Observable } from 'rxjs/Observable';
+import { EditTaskPage } from '../edit-task/edit-task';
 
 @IonicPage()
 @Component({
@@ -20,53 +14,30 @@ import { ActionSheetController } from 'ionic-angular';
 })
 export class AgendaPage {
 
-  tasks: Task []=[];
+  navEdit= EditTaskPage;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private TaskService: TaskService, public actionSheetCtrl: ActionSheetController) {
-  }
+  taskList: Observable<Task[]>
+
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private taskService: TaskService
+  ) {
+    this.taskList= this.taskService.getTaskList().snapshotChanges().map(
+      changes => {
+        return changes.map(c => ({
+          key: c.payload.key, 
+          ...c.payload.val(),
+          }))
+        });
+      }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad AgendaPage');
   }
+  
   onLoadNewTask() {
-    this.navCtrl.push(NuevaTareaPage);
-  }
-  ionViewWillEnter(){
-    this.tasks= this.TaskService.getTask();
+    this.navCtrl.push('NuevaTareaPage');
   }
 
-  openActionSheetController(){
-    let actionSheet = this.actionSheetCtrl.create({
-      title: 'Acciones',
-      buttons: [
-        {
-          text: 'Modificar',
-          icon: "add-circle",
-          cssClass: 'EditIcon',
-          handler: () => {
-            console.log('Modificar clicked');
-          }
-        },
-        {
-          text: 'Delete',
-          icon: "remove-circle",
-          cssClass: 'EditIcon2',
-          role: 'destructive',
-          handler: () => {
-            console.log('Delete clicked');
-          }
-        },
-        {
-          text: 'Cancelar',
-          //role: 'cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        }
-      ]
-    });
-
-    actionSheet.present();    
-  }
 
 }

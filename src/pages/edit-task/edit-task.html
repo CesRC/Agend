@@ -1,10 +1,7 @@
 
 <ion-header>
-  <ion-navbar color= "primary">
-      <button ion-button menuToggle>
-        <ion-icon name="menu"></ion-icon>
-      </button>
-    <ion-title>Nuevo Tarea</ion-title>
+  <ion-navbar>
+    <ion-title>{{task?.evento}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -31,9 +28,9 @@
   </ion-item>    
 
 
-<div align="center">
-<button ion-button large (click)="addTask(task)">Agregar</button>
-</div>
+  <div align="center">
+    <button ion-button block full (click)="saveTask(task)">Guardar</button>
+    <button ion-button block full color="danger" (click)="removeTask(task)">Eliminar</button>
+  </div>
 
 </ion-content>
-

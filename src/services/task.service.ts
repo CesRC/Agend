@@ -1,19 +1,29 @@
 import {Task} from "../models/task.model"
+import { Injectable } from "@angular/core";
+import { AngularFireDatabase } from "angularfire2/database";
+
+@Injectable()
 export class TaskService{
     
-    private tasks: Task []=
-    [{"evento": "Examen DyEPI", "fecha": "12 de Abril de 2018", "lugar": "UC3M", "prioridad":"Alta"},
-    {"evento": "Examen DyEPI", "fecha": "12 de Abril de 2018", "lugar": "UC3M", "prioridad":"Alta"}];
+    private taskListRef = this.db.list<Task>('task');
     
-    constructor(){
+    constructor(private db: AngularFireDatabase){
     }
 
-    addTask(tarea: Task){
-        this.tasks.push(tarea);
+    getTaskList(){
+        return this.taskListRef;
     }
 
-    getTask(){
-        return this.tasks;
+    addTask (task: Task){
+        return this.taskListRef.push(task);
+    }
+
+    editTask (task: Task){
+        return this.taskListRef.update(task.key, task);
+    }
+
+    removeTask (task: Task){
+        return this.taskListRef.remove(task.key);
     }
 
 
